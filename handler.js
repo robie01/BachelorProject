@@ -1,7 +1,7 @@
+
 const express = require('express')
 const fetch = require('node-fetch')
 const redis = require('redis')
-
 
 // create express application instance
 const app = express()
@@ -29,31 +29,32 @@ app.get('/jobs',(req, res) => {
             fetch(api_url)
                 .then(response => response.json())
                 .then(jobs => {
-
-                    // Save the  API response in Redis store,  data expire time in 3600 seconds, it means one hour
-                    client.setex(jobListRedisKey, 10, JSON.stringify(jobs))
-
                     // to do fetch the desired output
                     let jobContent = [];
+                    let sortedValue;
+
                     jobs.forEach(function(job){
-                        let filteredResults = {
-                            jobId: job.jobId,
-                            title: job.title.localization[2],
-                            location:job.location.address,
-                            created: job.created,
-                            edited: job.edited,
-                            deadline: job.deadline,
-                            deadlineText : job.deadlineText.localization[1],
+                        for (let i = 0; i < jobs.length; i++) {
+                            let filteredResults = {
+                                jobId: job.jobId,
+                                title: job.title.localization[2],
+
+                                location:job.location.address,
+                                created: job.created,
+                                edited: job.edited,
+                                deadline: job.deadline,
+                                deadlineText : job.deadlineText.localization[1],
+                            }
+                            sortedValue = filteredResults;
                         }
-                        jobContent = filteredResults;
-                    });
+                        jobContent.push(sortedValue)
+                        console.log(jobContent)
+                    })
 
+                    // Save the  API response in Redis store,  data expire time in 3600 seconds, it means one hour
+                    client.setex(jobListRedisKey, 10, JSON.stringify(jobContent))
 
-
-
-
-
-                    /*let filteredResults = {
+                    let filteredResults = {
 
                         title: jobs.map(job => job.title),
                         location: jobs.map(job => job.location.address),
@@ -63,13 +64,10 @@ app.get('/jobs',(req, res) => {
                         deadline: jobs.map(job => job.deadline),
                         deadlineText: jobs.map(job => job.deadlineText)
                        // fields: jobs.map(obj => mapOut(obj, ["applyUrl", "timeZone", "adUrl", "mediaId", "advertisements", "type", "created", "edited", "tags", "data", "deadlineUTC"]))
-                    }*/
-
-
-
+                    }
                     console.log("result", jobContent)
                     // Send JSON response to client
-                    return res.json({ source: 'api', data: jobContent
+                    return res.json({ source: 'api', data: filteredResults
                     })
 
                 })
