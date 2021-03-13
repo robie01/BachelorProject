@@ -37,24 +37,27 @@ app.get('/jobs',(req, res) => {
                         for (let i = 0; i < jobs.length; i++) {
                             let filteredResults = {
                                 jobId: job.jobId,
-                                title: job.title.localization[2],
-
+                                jobTitle: job.title.localization[2],
                                 location:job.location.address,
                                 created: job.created,
                                 edited: job.edited,
                                 deadline: job.deadline,
                                 deadlineText : job.deadlineText.localization[1],
+                               // functionalArea: job.data.title.localization.keys("locale: en-GB")
                             }
+
                             sortedValue = filteredResults;
                         }
                         jobContent.push(sortedValue)
                         console.log(jobContent)
                     })
+                    const functionalArea = jobs.map(x => x.data.title.localization[2])
+                    console.log(functionalArea)
 
                     // Save the  API response in Redis store,  data expire time in 3600 seconds, it means one hour
                     client.setex(jobListRedisKey, 10, JSON.stringify(jobContent))
 
-                    let filteredResults = {
+                    /*let filteredResults = {
 
                         title: jobs.map(job => job.title),
                         location: jobs.map(job => job.location.address),
@@ -64,11 +67,10 @@ app.get('/jobs',(req, res) => {
                         deadline: jobs.map(job => job.deadline),
                         deadlineText: jobs.map(job => job.deadlineText)
                        // fields: jobs.map(obj => mapOut(obj, ["applyUrl", "timeZone", "adUrl", "mediaId", "advertisements", "type", "created", "edited", "tags", "data", "deadlineUTC"]))
-                    }
+                    }*/
                     console.log("result", jobContent)
                     // Send JSON response to client
-                    return res.json({ source: 'api', data: filteredResults
-                    })
+                    return res.json({ source: 'api', data: jobContent})
 
                 })
                 .catch(error => {
