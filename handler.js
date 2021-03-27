@@ -3,6 +3,7 @@ const express = require('express')
 const fetch = require('node-fetch')
 const redis = require('redis')
 
+
 // create express application instance
 const app = express()
 
@@ -10,13 +11,14 @@ const app = express()
 const client = redis.createClient(6379)
 const api_url = "https://api.emply.com/v1/semcomaritime-v2/postings"
 
+
+
+
 client.on('error', (err) => {
     console.log("Error " + err)
 });
 let jobList;
 app.get('/jobs',(req, res) => {
-
-    let titleValue = [];
 
     // key to store results in Redis store
     const jobListRedisKey = 'user:jobs'
@@ -24,7 +26,7 @@ app.get('/jobs',(req, res) => {
     return client.get(jobListRedisKey, (err, jobs) => {
 
         if(jobs){
-            return res.json({source: 'cache', data: JSON.parse(jobs)})
+            return res.json({source: 'cache', fields: JSON.parse(jobs)})
         } else { // key does not exist in Redis store
             fetch(api_url)
                 .then(response => response.json())
@@ -32,7 +34,6 @@ app.get('/jobs',(req, res) => {
                     // to do fetch the desired output
                     let jobContent = [];
                     let sortedValue;
-
                     jobs.forEach(function(job){
                         for (let i = 0; i < jobs.length; i++) {
                             let filteredResults = {
@@ -43,7 +44,7 @@ app.get('/jobs',(req, res) => {
                                 edited: job.edited,
                                 deadline: job.deadline,
                                 deadlineText : job.deadlineText.localization[1],
-                               // functionalArea: job.data.title.localization.keys("locale: en-GB")
+                                //functionalArea: job && job.data ? job.data.title.localization[2] : null
                             }
 
                             sortedValue = filteredResults;
@@ -51,26 +52,18 @@ app.get('/jobs',(req, res) => {
                         jobContent.push(sortedValue)
                         console.log(jobContent)
                     })
-                    const functionalArea = jobs.map(x => x.data.title.localization[2])
-                    console.log(functionalArea)
 
-                    // Save the  API response in Redis store,  data expire time in 3600 seconds, it means one hour
+                    // Save the  API response in Redis store,  data expire time in 18000 seconds, it means 30 mins
                     client.setex(jobListRedisKey, 10, JSON.stringify(jobContent))
 
-                    /*let filteredResults = {
 
-                        title: jobs.map(job => job.title),
-                        location: jobs.map(job => job.location.address),
-                        //functionalArea:jobs.map(job => job.localization[0]),
-                        created: jobs.map(job => job.created),
-                        edited: jobs.map(job => job.edited),
-                        deadline: jobs.map(job => job.deadline),
-                        deadlineText: jobs.map(job => job.deadlineText)
-                       // fields: jobs.map(obj => mapOut(obj, ["applyUrl", "timeZone", "adUrl", "mediaId", "advertisements", "type", "created", "edited", "tags", "data", "deadlineUTC"]))
-                    }*/
+                    //let dataVal = getNestedObject(jobs, ['data'[ 'title', 'localization'[ 2, 'locale']]])
+
+
                     console.log("result", jobContent)
                     // Send JSON response to client
-                    return res.json({ source: 'api', data: jobContent})
+                    return res.json({ source: 'api', fields: jobContent})
+
 
                 })
                 .catch(error => {

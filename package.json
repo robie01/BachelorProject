@@ -7,11 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Robie Sun",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "node-fetch": "^2.6.1",
-    "redis": "^3.0.2"
+    "redis": "^3.0.2",
+    "request": "^2.88.2",
+    "some": "^0.1.1",
+    "underscore": "^1.12.0"
   }
 }
