@@ -2,12 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7082659-c5c5-4005-a1fa-7587e3fcdb8c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/API-gateway/.yo-rc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API-gateway/config/gateway.config.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API-gateway/config/models/applications.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API-gateway/config/models/credentials.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API-gateway/config/models/users.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API-gateway/config/system.config.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API-gateway/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API-gateway/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/API-gateway/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/domain/configDomain1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/domain/configDomain2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/jobService_temp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/handler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/express/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/express/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/node-fetch/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/node-fetch/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/routes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/jobService1.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/jobService1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/jobService2.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/jobService2.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,36 +39,64 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/service/jobService2.js" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/service/jobService1.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1peHymahJbqgcgKnUbR8gYcxMfX" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.18.3" />
     <property name="javascript.nodejs.core.library.typings.version" value="12.20.5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/handler.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../semco" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Node.js.handler.js">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\robie\Desktop\BachelorProject\webapiservice" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.jobService_temp.js">
     <configuration name="Unnamed" type="JavascriptDebugType" nameIsGenerated="true">
       <method v="2" />
     </configuration>
-    <configuration name="handler.js" type="NodeJSConfigurationType" path-to-js-file="handler.js" working-dir="$PROJECT_DIR$">
+    <configuration name="jobService1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/service/jobService1.js" working-dir="$PROJECT_DIR$/service">
+      <method v="2" />
+    </configuration>
+    <configuration name="jobService2.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/service/jobService2.js" working-dir="$PROJECT_DIR$/service">
+      <method v="2" />
+    </configuration>
+    <configuration name="jobService_temp.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/service/jobService_temp.js" working-dir="$PROJECT_DIR$/service">
+      <method v="2" />
+    </configuration>
+    <configuration name="server.js" type="NodeJSConfigurationType" path-to-js-file="server.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="JavaScript Debug.Unnamed" />
-      <item itemvalue="Node.js.handler.js" />
+      <item itemvalue="Node.js.server.js" />
+      <item itemvalue="Node.js.jobService2.js" />
+      <item itemvalue="Node.js.jobService1.js" />
+      <item itemvalue="Node.js.jobService_temp.js" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.jobService_temp.js" />
+        <item itemvalue="Node.js.jobService2.js" />
+        <item itemvalue="Node.js.jobService1.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -68,7 +109,14 @@
       <workItem from="1615536894746" duration="15805000" />
       <workItem from="1615833636513" duration="15650000" />
       <workItem from="1616749510332" duration="8546000" />
-      <workItem from="1616848879551" duration="1507000" />
+      <workItem from="1616848879551" duration="9582000" />
+      <workItem from="1617267720808" duration="1881000" />
+      <workItem from="1617784655693" duration="9102000" />
+      <workItem from="1618058328744" duration="4727000" />
+      <workItem from="1618071415168" duration="2469000" />
+      <workItem from="1618073997154" duration="8627000" />
+      <workItem from="1618127990720" duration="6145000" />
+      <workItem from="1618256811441" duration="5751000" />
     </task>
     <servers />
   </component>
@@ -86,5 +134,8 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

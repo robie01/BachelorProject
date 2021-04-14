@@ -1,0 +1,81 @@
+{
+  http: {
+    port: 8080
+  },
+  admin: {
+    port: 9876,
+    host: localhost
+  },
+  apiEndpoints: {
+    api: {
+      host: localhost,
+      paths: /ip
+    },
+    service1: {
+      host: localhost,
+      methods: 'GET',
+      paths: '/api/portal1'
+    },
+    service2: {
+      host: localhost,
+      methods: 'GET',
+      paths:  '/api/portal2'
+    }
+  },
+  serviceEndpoints: {
+    service1: {
+      url: 'http://localhost:3005/service1/jobs'
+    },
+    service2: {
+      url: 'http://localhost:3020/service2/jobs'
+    }
+  },
+  policies: [
+      basic-auth,
+      key-auth,
+      cors,
+      expression,
+      log,
+      oauth2,
+      proxy,
+      rate-limit
+  ],
+  pipelines: [
+    {
+      name: default-1,
+      apiEndpoints: [
+          service1
+      ],
+      policies: [
+        {
+          proxy: [
+            {
+              action: {
+                serviceEndpoint: service1,
+                changeOrigin: true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: default-2,
+      apiEndpoints: [
+          service2
+      ],
+      policies: [
+        {
+          proxy: [
+            {
+              action: {
+                serviceEndpoint: service2,
+                changeOrigin: true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
